@@ -1,7 +1,7 @@
 
 
 
-/*function checkMunicipios() {
+function checkMunicipios() {
     const municipioTitles = document.querySelectorAll('.municipio__item__title');
     const munDescription = document.querySelectorAll('.municipio__description');
     municipioTitles.forEach((element, index) => {
@@ -22,23 +22,29 @@
         });
     });
 };
-checkMunicipios();*/
+checkMunicipios();
 
-function checkMunicipios() {
+//Función del select
+document.addEventListener('DOMContentLoaded', function () {
+    const municipioSelect = document.getElementById('municipioSelect');
     const municipioTitles = document.querySelectorAll('.municipio__item__title');
-    const munDescription = document.querySelectorAll('.municipio__description');
-    municipioTitles.forEach((element, index) => {
-        element.addEventListener('click', event => {
-            event.stopPropagation();
-            munDescription.forEach((content, ind) => {
-                if (index!==ind) {
-                    content.classList.remove('active');
-                    municipioTitles[ind].classList.remove('active'); // Remover la clase active de los títulos no seleccionados
-                }
-            });
-            munDescription[index].classList.toggle('active'); //Alterna la clase active de la descripción seleccionada 
-            municipioTitles[index].classList.toggle('active'); // Alternar la clase active del título seleccionado
+    const munDescriptions = document.querySelectorAll('.municipio__description');
+
+    municipioSelect.addEventListener('change', function () {
+        const selectedMunicipioId = municipioSelect.value;
+        munDescriptions.forEach(description => {
+            if (description.id === selectedMunicipioId) {
+                description.classList.add('active');
+            } else {
+                description.classList.remove('active');
+            }
+        });
+        municipioTitles.forEach(title => {
+            if (title.id === selectedMunicipioId) {
+                title.classList.add('active');
+            } else {
+                title.classList.remove('active');
+            }
         });
     });
-};
-checkMunicipios();
+});

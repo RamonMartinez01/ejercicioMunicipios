@@ -89,6 +89,20 @@
 
 }
 
+.select-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.select-wrapper select {
+  position: sticky;
+  top: 0;
+  /*right: 0;*/
+  z-index: 1;
+  background-color: white; /* Ajusta el color de fondo según lo necesites */
+}
+
 .municipio__description-span {
   display: flex;
   flex-direction: row;
